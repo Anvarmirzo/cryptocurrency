@@ -1,8 +1,8 @@
 import React from 'react';
-import {Avatar, Menu, Typography} from "antd";
-import {Link, NavLink} from 'react-router-dom'
+import {Avatar, Menu, Typography} from 'antd';
+import {NavLink} from 'react-router-dom'
 import icon from '../../assets/images/cryptocurrency.png';
-import {FundOutlined, HomeOutlined, MoneyCollectOutlined} from "@ant-design/icons";
+import {FundOutlined, HomeOutlined, MoneyCollectOutlined} from '@ant-design/icons';
 
 
 interface NavbarProps {
@@ -19,16 +19,16 @@ export const Navbar = (props: NavbarProps) => {
             </div>
             <Menu theme="dark">
                 <Menu.Item icon={<HomeOutlined/>}>
-                    <NavLink to='/'>Home</NavLink>
+                    <NavLink to="/">Home</NavLink>
                 </Menu.Item>
                 <Menu.Item icon={<FundOutlined/>}>
-                    <NavLink to='/cryptocurrencies'>Cryptocurrencies</NavLink>
+                    <NavLink to="/cryptocurrencies">Cryptocurrencies</NavLink>
                 </Menu.Item>
                 <Menu.Item icon={<MoneyCollectOutlined/>}>
-                    <NavLink to='/exchanges'>Exchanges</NavLink>
+                    <NavLink to="/exchanges">Exchanges</NavLink>
                 </Menu.Item>
                 <Menu.Item icon={<MoneyCollectOutlined/>}>
-                    <NavLink to='/news'>News</NavLink>
+                    <NavLink to="/news">News</NavLink>
                 </Menu.Item>
             </Menu>
         </nav>
