@@ -1,1 +1,2 @@
-export * from './ICoinsResponse';
+export * from './Coins';
+export * from './News';
