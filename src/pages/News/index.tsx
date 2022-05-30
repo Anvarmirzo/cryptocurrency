@@ -1,6 +1,10 @@
 import React from 'react';
 
-export const NewsPage = () => {
+interface NewsPageProps {
+    simplified?: boolean;
+}
+
+export const NewsPage = ({simplified}: NewsPageProps) => {
     return (
         <div>
             NewsPage
