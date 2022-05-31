@@ -2,7 +2,27 @@ export interface ICoinsResponse {
     status: string;
     data: {
         stats: IStat;
-        coins: ICoin[];
+        coins: Pick<ICoin,
+            'uuid' |
+            'symbol' |
+            'name' |
+            'color' |
+            'iconUrl' |
+            'marketCap' |
+            'price' |
+            'btcPrice' |
+            'listedAt' |
+            'change' |
+            'rank' |
+            'coinrankingUrl' |
+            'sparkline'>[];
+    }
+}
+
+export interface ICoinResponse {
+    status: string;
+    data: {
+        coin: ICoin;
     }
 }
 
@@ -29,5 +49,31 @@ export interface ICoin {
     rank: number;
     coinrankingUrl: string;
     sparkline: string[];
+    '24hVolume': string;
+    allTimeHigh: {
+        price: string;
+        timestamp: number;
+    }
+    description: string;
+    links: ICoinLink[];
+    lowVolume: boolean;
+    numberOfExchanges: number;
+    numberOfMarkets: number;
+    priceAt: number;
+    supply: ICoinSupply;
+    tier: number;
+    websiteUrl: string;
+}
+
+export interface ICoinLink {
+    name: string;
+    type: string;
+    url: string;
+}
+
+export interface ICoinSupply {
+    circulating: string;
+    confirmed: boolean;
+    total: string;
 }
 
