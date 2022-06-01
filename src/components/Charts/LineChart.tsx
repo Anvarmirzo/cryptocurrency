@@ -1,12 +1,54 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Col, Row, Typography} from 'antd';
+import {Line} from 'react-chartjs-2';
+import {ICoinHistoryResponse} from '../../core/models';
+import {CategoryScale, Chart, Legend, LinearScale, LineElement, PointElement, Title, Tooltip} from 'chart.js';
+
+Chart.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Tooltip,
+    Legend
+);
 
 interface LineChartProps {
-    coinHistory: any;
+    coinHistory: ICoinHistoryResponse;
     currentPrice: string;
     coinName: string
 };
 export const LineChart = ({coinHistory, currentPrice, coinName}: LineChartProps) => {
+    const [coinPrice, setCoinPrice] = useState<string[]>([]);
+    const [coinTimestamp, setCoinTimestamp] = useState<string[]>([]);
+    useEffect(() => {
+        coinHistory.data.history.forEach((coinHistoryItem) => {
+            setCoinPrice(prev => [...prev, coinHistoryItem.price])
+            setCoinTimestamp(prev => [...prev, new Date(coinHistoryItem.timestamp * 1000).toLocaleDateString()])
+        });
+    }, [coinHistory])
+
+    const data = {
+        labels: coinTimestamp,
+        datasets: [
+            {
+                label: 'Price In USD',
+                data: coinPrice,
+                fill: false,
+                backgroundColor: '#0071bd',
+                borderColor: '#0071bd',
+            },
+        ],
+    };
+    const options = {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top' as const,
+            },
+        },
+    };
+
     return (
         <>
             <Row className="chart-header">
@@ -22,6 +64,7 @@ export const LineChart = ({coinHistory, currentPrice, coinName}: LineChartProps)
                     </Typography.Title>
                 </Col>
             </Row>
+            <Line options={options} data={data}/>
         </>
     );
-};
+}

@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import {ICoinResponse, ICoinsResponse} from '../models';
+import {ICoinHistoryResponse, ICoinResponse, ICoinsResponse} from '../models';
 
 const cryptoAPIHeaders = {
     'X-RapidAPI-Host': process.env.REACT_APP_CRYPTO_RAPIDAPI_HOST,
@@ -18,7 +18,7 @@ export const cryptoApi = createApi({
         getCryptoDetails: builder.query<ICoinResponse, string>({
             query: (coinId) => createRequest(`/coin/${coinId}`)
         }),
-        getCryptoHistory: builder.query<ICoinResponse, { coinId: string, timePeriod: string }>({
+        getCryptoHistory: builder.query<ICoinHistoryResponse, { coinId: string, timePeriod: string }>({
             query: ({coinId, timePeriod}) => createRequest(`/coin/${coinId}/history?timePeriod=${timePeriod}`)
         }),
     })

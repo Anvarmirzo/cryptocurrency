@@ -26,6 +26,19 @@ export interface ICoinResponse {
     }
 }
 
+export interface ICoinHistoryResponse {
+    status: string;
+    data: {
+        change: string;
+        history: ICoinHistory[];
+    }
+}
+
+export interface ICoinHistory {
+    price: string;
+    timestamp: number;
+}
+
 export interface IStat {
     total: number;
     totalCoins: number;
@@ -76,4 +89,3 @@ export interface ICoinSupply {
     confirmed: boolean;
     total: string;
 }
-
