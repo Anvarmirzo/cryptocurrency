@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useGetCryptoNewsQuery, useGetCryptosQuery} from '../../core/services';
 import {Avatar, Card, Col, Row, Select, Typography} from 'antd';
 import moment from 'moment';
+import {Loader} from '../../components';
 
 const demoImgUrl = 'http://coinrevolution.com/wp-content/uploads/2020/06/cryptonews.jpg';
 
@@ -15,7 +16,7 @@ export const NewsPage = ({simplified}: NewsPageProps) => {
     const {data: cryptoNews, isLoading} = useGetCryptoNewsQuery({newsCategory, count: simplified ? 6 : 12});
     const {data: cryptos} = useGetCryptosQuery(100);
 
-    if (isLoading) return <>Loading...</>;
+    if (isLoading) return <Loader/>;
 
     const handleChange = (value: string) => setNewsCategory(value);
 

@@ -4,7 +4,7 @@ import {INewsResponse} from '../models';
 const cryptoNewsApiHeaders = {
     'X-BingApis-SDK': process.env.REACT_APP_CRYPTO_NEWS_BING_API_SDK,
     'X-RapidAPI-Host': process.env.REACT_APP_CRYPTO_NEWS_RAPIDAPI_HOST,
-    'X-RapidAPI-Key': process.env.REACT_APP_CRYPTO_NEWS_RAPIDAPI_KEY
+    'X-RapidAPI-Key': process.env.REACT_APP_RAPIDAPI_KEY
 };
 
 const createRequest = (url: string) => ({url, headers: cryptoNewsApiHeaders});

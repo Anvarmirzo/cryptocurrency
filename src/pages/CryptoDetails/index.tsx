@@ -12,7 +12,7 @@ import {
     TrophyOutlined
 } from '@ant-design/icons';
 import {Col, Row, Select, Typography} from 'antd';
-import {LineChart} from '../../components';
+import {LineChart, Loader} from '../../components';
 
 const time = ['3h', '24h', '7d', '30d', '3m', '1y', '3y', '5y'];
 
@@ -28,7 +28,7 @@ export const CryptoDetailsPage = () => {
     })
     const cryptoDetails = detailsData?.data?.coin;
 
-    if (isDetailsDataFetching || isHistoryDataFetching) return <>Loading...</>;
+    if (isDetailsDataFetching || isHistoryDataFetching) return <Loader/>;
     if (!cryptoDetails || !historyData) return <>Not found</>;
     const stats = [
         {

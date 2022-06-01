@@ -5,12 +5,13 @@ import millify from 'millify';
 import {Link} from 'react-router-dom';
 import {CryptocurrenciesPage} from '../Cryptocurrencies';
 import {NewsPage} from '../News';
+import {Loader} from '../../components';
 
 export const HomePage = () => {
     const {data, isFetching} = useGetCryptosQuery(10);
     const stats = data?.data.stats;
 
-    if (isFetching) return <>Loading...</>;
+    if (isFetching) return <Loader/>;
     return (
         <>
             <Typography.Title level={2} className="heading">Global Crypto Stats</Typography.Title>
