@@ -1,3 +1,5 @@
+import {IExchange} from './Exchanges';
+
 export interface ICoinsResponse {
     status: string;
     data: {
@@ -33,6 +35,18 @@ export interface ICoinHistoryResponse {
         history: ICoinHistory[];
     }
 }
+
+export interface ICoinExchangesResponse {
+    status: string;
+    data: {
+        stats: {
+            '24hVolume': string;
+            total: number;
+        };
+        exchanges: IExchange[];
+    }
+}
+
 
 export interface ICoinHistory {
     price: string;

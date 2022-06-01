@@ -3,6 +3,7 @@ import {useGetCryptosQuery} from '../../core/services';
 import {Card, Col, Input, Row} from 'antd';
 import {Link} from 'react-router-dom';
 import millify from 'millify';
+import {Loader} from '../../components';
 
 interface CryptoCurrenciesPageProps {
     simplified?: boolean;
@@ -17,7 +18,7 @@ export const CryptocurrenciesPage = ({simplified}: CryptoCurrenciesPageProps) =>
         setCryptos(data?.data?.coins || []);
     }, [data?.data?.coins])
 
-    if (isFetching) return <>Loading...</>;
+    if (isFetching) return <Loader/>;
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value);

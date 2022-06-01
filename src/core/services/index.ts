@@ -1,2 +1,2 @@
-export * from './cryptoApi'
-export * from './cryptoNewsApi'
+export * from './cryptoApi';
+export * from './cryptoNewsApi';
