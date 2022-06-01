@@ -30,7 +30,6 @@ export const CryptoDetailsPage = () => {
 
     if (isDetailsDataFetching || isHistoryDataFetching) return <>Loading...</>;
     if (!cryptoDetails || !historyData) return <>Not found</>;
-
     const stats = [
         {
             title: 'Price to USD',
@@ -128,10 +127,11 @@ export const CryptoDetailsPage = () => {
                 </p>
             </Col>
             <Select
-                defaultValue="7d"
+                defaultValue={timePeriod}
                 className="select-timeperiod"
                 placeholder="Select Time Period"
                 onChange={handleChange}
+                value={timePeriod}
             >
                 {renderTimePeriod()}
             </Select>
@@ -165,7 +165,7 @@ export const CryptoDetailsPage = () => {
                     <Typography.Title level={3} className="coin-details-heading">
                         What is {cryptoDetails.name}?
                     </Typography.Title>
-                        {HTMLReactParser(cryptoDetails.description)}
+                    {HTMLReactParser(cryptoDetails.description)}
                 </Row>
                 <Col className="coin-links">
                     <Typography.Title level={3} className="coin-details-heading">
