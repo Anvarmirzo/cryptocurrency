@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Col, Row, Typography} from 'antd';
 import {Line} from 'react-chartjs-2';
 import {ICoinHistoryResponse} from '../../core/models';
-import {CategoryScale, Chart, Legend, LinearScale, LineElement, PointElement, Title, Tooltip} from 'chart.js';
+import {CategoryScale, Chart, Legend, LinearScale, LineElement, PointElement, Tooltip} from 'chart.js';
 
 Chart.register(
     CategoryScale,
